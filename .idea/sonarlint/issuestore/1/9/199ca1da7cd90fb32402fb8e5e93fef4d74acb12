@@ -1,0 +1,23 @@
+
+l
+java:S1192("JDefine a constant instead of duplicating this literal "addresses" 3 times.(¬¥ß‘ÿÿÿÿÿ8ç—Ä©¯1
+^
+java:S4973Z"<Strings and Boxed types should be compared using "equals()".(»š§³ýÿÿÿÿ8ê—Ä©¯1
+W
+java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8šÄ©¯1
+]	java:S125#"<This block of commented-out lines of code should be removed.(©·Ã«ûÿÿÿÿ8 šÄ©¯1
+o
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 55 to the 15 allowed.(‹¨¯¿8¤šÄ©¯1
+W
+java:S11613":Add the "@Override" annotation above this method signature(‹¨¯¿8¨šÄ©¯1
+l
+java:S2674G"JCheck the return value of the "read" call to see how many bytes were read.(¥«±°ÿÿÿÿÿ8ªšÄ©¯1
+G	java:S106k"+Replace this use of System.out by a logger.(··Ûë8­šÄ©¯1
+J
+java:S1125“"'Remove the unnecessary boolean literal.(Õ¯±ûÿÿÿÿ8°šÄ©¯1
+Y
+java:S1128	"7Remove this unused import 'javax.jws.soap.SOAPBinding'.(î¶âÑûÿÿÿÿ8µšÄ©¯1
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(‡éÙšþÿÿÿÿ8µšÄ©¯1
+ä
+java:S65413"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 121 to 64, Complexity from 18 to 14, Nesting Level from 6 to 2, Number of Variables from 53 to 6.(‹¨¯¿8¶šÄ©¯1

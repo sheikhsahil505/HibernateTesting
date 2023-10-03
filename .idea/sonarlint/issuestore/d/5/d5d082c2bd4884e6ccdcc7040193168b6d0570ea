@@ -1,0 +1,13 @@
+
+ž
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÅµÄè8õ‰óª¯1
+W
+java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8ù‰óª¯1
+W
+java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿8ú‰óª¯1
+]	java:S125%"<This block of commented-out lines of code should be removed.(©·Ã«ûÿÿÿÿ8ü‰óª¯1
+\
+java:S4719'":Replace Charset.forName() call with StandardCharsets.UTF_8(®Žˆžùÿÿÿÿ8ü‰óª¯1
+G	java:S106;"+Replace this use of System.out by a logger.(†‡€Á8þ‰óª¯1
+t
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ŒœÛ8€Šóª¯1

@@ -16,13 +16,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class ServiceImpl implements Service {
-    private Connection con;
-    private Statement stmt;
-    private String dbPassword="123";
-
-    SessionFactory factory = new Configuration() .configure("hibernate.cfg.xml").buildSessionFactory();
-    Session session = factory.openSession();
-    Transaction tx = session.beginTransaction();
+    private static SessionFactory factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+    private static   Session session = factory.openSession();
+    private static  Transaction tx = session.beginTransaction();
 
     public void saveUser(User user) {
        session.save(user);
@@ -42,6 +38,7 @@ public class ServiceImpl implements Service {
                         .setParameter("email", email)
                         .setParameter("password", password)
                         .uniqueResult();
+                tx.commit();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -56,6 +53,7 @@ public class ServiceImpl implements Service {
                     .setParameter("email", email)
                     .setParameter("dob", dob)
                     .list();
+            tx.commit();
             return !users.isEmpty();
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,14 +77,27 @@ public class ServiceImpl implements Service {
     }
 
 
-
-    @Override
+@Override
     public List<User> getAllRegistrations() {
         try {
             String hql = "FROM User WHERE role = :role";
-            return session.createQuery(hql, User.class)
+            List<User> users = session.createQuery(hql, User.class)
                     .setParameter("role", "user")
                     .list();
+
+            for (User user : users) {
+                Blob profilePictureBlob = user.getProfilePicture();
+                if (profilePictureBlob != null) {
+                    // Convert Blob to byte array
+                    byte[] profilePictureBytes = profilePictureBlob.getBytes(1, (int) profilePictureBlob.length());
+                    // Encode byte array to Base64
+                    String base64ProfilePicture = Base64.getEncoder().encodeToString(profilePictureBytes);
+                    // Set the Base64-encoded image data in the user object
+                    user.setBase64ProfilePicture(base64ProfilePicture);
+                }
+            }
+
+            return users;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -97,9 +108,23 @@ public class ServiceImpl implements Service {
     public List<User> getUserByEmail(String email) {
         try {
             String hql = "FROM User WHERE email = :email";
-            return session.createQuery(hql, User.class)
+
+            List<User> user=  session.createQuery(hql, User.class)
                     .setParameter("email", email)
                     .list();
+
+            for (User users : user) {
+                Blob profilePictureBlob = users.getProfilePicture();
+                if (profilePictureBlob != null) {
+                    // Convert Blob to byte array
+                    byte[] profilePictureBytes = profilePictureBlob.getBytes(1, (int) profilePictureBlob.length());
+                    // Encode byte array to Base64
+                    String base64ProfilePicture = Base64.getEncoder().encodeToString(profilePictureBytes);
+                    // Set the Base64-encoded image data in the user object
+                    users.setBase64ProfilePicture(base64ProfilePicture);
+                }
+            }
+            return user;
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyList();
@@ -212,6 +237,4 @@ public void updateAddressByAddressId(int id, String street, String apartment, St
             // Handle the exception appropriately in your application
         }
     }
-
-
 }

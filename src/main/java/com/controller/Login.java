@@ -26,6 +26,7 @@ public class Login extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Service service = new ServiceImpl();
 
     try {
 
@@ -33,7 +34,7 @@ public class Login extends HttpServlet {
     String username = request.getParameter("username");
     String password = request.getParameter("password");
 
-    Service service = new ServiceImpl();
+
 //    service.connectDB();
 //    convert into encode password.
         String encoder = Base64.getEncoder().encodeToString(password.getBytes(Charset.forName("UTF-8")));

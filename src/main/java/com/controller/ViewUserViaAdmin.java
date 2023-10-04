@@ -31,7 +31,7 @@ try {
         HttpSession session1= request.getSession(true);
         session1.setAttribute("oldEmail",email);
         Service service = new ServiceImpl();
-//        service.connectDB();
+
          logger.info("profile viewed by admin of username "+email);
              List<User> allRegistrations = service.getAllRegistrations();
             List<User> userByEmail = service.getUserByEmail(email);

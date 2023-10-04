@@ -100,10 +100,9 @@
  <div class="container">
                     <a class="btn btn-success btn-md" type="button" href="home" style="position: absolute; top: 0; right: 90px; margin: 1rem;">Home</a>
                 </div>
-   <c:if test="${not empty profile}">
-            <c:forEach items="${profile}" var="profiles">
+
 <div class="profile-picture-container">
-    <img src="data:image/jpeg; ${profiles.profilePicture}"
+     <img src="data:image/jpeg;base64,${profile[0].base64ProfilePicture}"
         alt="Profile Picture" class="profile-picture mt-3" id="profilePicture">
 </div>
 
@@ -113,7 +112,8 @@
 </div>
 
         <div class="container ">
-
+ <c:if test="${not empty profile}">
+            <c:forEach items="${profile}" var="profiles">
             <h1 class="text-center">${profiles.first_name} ${profiles.last_name}</h1>
  <div class="text-center">
             <a class="btn btn-primary btn-sm" type="button" href="UpdateHimself?user_id=${profiles.user_id}&email=${profiles.email}">Edit Profile</a>

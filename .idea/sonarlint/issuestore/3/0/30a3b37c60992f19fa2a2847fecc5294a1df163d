@@ -1,17 +1,5 @@
 
 c
-java:S1192*"FDefine a constant instead of duplicating this literal "email" 5 times.(šı×Â8ôış¦¯1
+java:S1192&"FDefine a constant instead of duplicating this literal "email" 5 times.(šı×Â8’”ó­¯1
 H
-java:S1168\"+Return an empty collection instead of null.(¥¹ï8˜şş¦¯1
-M
-java:S1128"0Remove this unused import 'java.io.InputStream'.(¹»º8øñÒ¨¯1
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8øñÒ¨¯1
-J
-java:S1128"-Remove this unused import 'java.util.Base64'.(ëŠ»Õ8øñÒ¨¯1
-I
-java:S1068"'Remove this unused "con" private field.(èÜ¼Éüÿÿÿÿ8¢şş¦¯1
-E
-java:S1068"(Remove this unused "stmt" private field.(ËÉùá8¢şş¦¯1
-P
-java:S1068".Remove this unused "dbPassword" private field.(ÑÓ«¾úÿÿÿÿ8¢şş¦¯1
+java:S1168["+Return an empty collection instead of null.(¥¹ï8Ğ”ó­¯1

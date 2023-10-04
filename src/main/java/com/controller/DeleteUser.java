@@ -29,6 +29,7 @@ try {
 //  this is get user id and email from the jsp page
         String idStr = request.getParameter("user_id");
         int user_id = Integer.parseInt(idStr);
+
         String email = request.getParameter("email");
 
         Service service = new ServiceImpl();
@@ -40,7 +41,7 @@ try {
 
 // this code for delete particular user.
             service.deleteUser(user_id);
-        logger.info("delete user with user id "+user_id);
+            logger.info("delete user with user id "+user_id);
             List<User> allRegistrations = service.getAllRegistrations();
             List<User> userByEmail = service.getUserByEmail(email);
             List<Address> allAddressesById = service.findAllAddressesById(adminId);

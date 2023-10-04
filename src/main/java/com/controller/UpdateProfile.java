@@ -82,15 +82,13 @@ public class UpdateProfile extends HttpServlet {
                 for (User user1 : userByEmail1) {
                     Blob profilePicture = user1.getProfilePicture();
 
-//                    this is when image is selected
+//                    this is when image is not selected
                     if (Objects.equals(submittedFileName, "")) {
                         profilePictureBlob = profilePicture;
+                    } else {
+                        profilePictureBlob = new SerialBlob(bytes);
                     }
-
-                if(submittedFileName!="") {
-                    profilePictureBlob = new SerialBlob(bytes);
                 }
-
                 User user = new User();
                 user.setUser_id(id);
                 user.setFirst_name(firstName);
@@ -103,10 +101,7 @@ public class UpdateProfile extends HttpServlet {
 
                     String[] addressIds = request.getParameterValues("address_id1");
                     int[] addressId1 = Arrays.stream(addressIds).mapToInt(Integer::parseInt).toArray();
-                    for(int address :addressId1){
-                        System.out.println(address);
 
-                    }
                     String[] streets1 = request.getParameterValues("street1");
                     String[] apartment1 = request.getParameterValues("apartment1");
                     String[] city1 = request.getParameterValues("city1");
@@ -182,19 +177,16 @@ public class UpdateProfile extends HttpServlet {
 
                             service.saveAddress(address);
                         }
-
-                        List<User> allRegistrations = service.getAllRegistrations();
+                    }
+                    List<User> allRegistrations = service.getAllRegistrations();
 //            after update all the details this is show update details of the user in next page
-                        List<User> userByEmail = service.getUserByEmail(email);
-                        List<Address> allAddressesById = service.findAllAddressesById(id);
-                        request.setAttribute("addresses", allAddressesById);
-                        request.setAttribute("profile", userByEmail);
-                        request.setAttribute("registrations", allRegistrations);
-                        request.getRequestDispatcher("/jsp/View.jsp").forward(request, response);
-
-                    }
-                    }
-
+                    List<User> userByEmail = service.getUserByEmail(email);
+                    List<Address> allAddressesById = service.findAllAddressesById(id);
+                    request.setAttribute("addresses", allAddressesById);
+                    request.setAttribute("profile", userByEmail);
+                    request.setAttribute("registrations", allRegistrations);
+                    request.getRequestDispatcher("/jsp/View.jsp").forward(request, response);
+                    
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }

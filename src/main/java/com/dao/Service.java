@@ -37,5 +37,5 @@ public interface Service {
 
      void deleteUser(int userId);
 
-
+     void closeHibernate();
 }

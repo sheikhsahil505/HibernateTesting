@@ -225,6 +225,7 @@ public void updateAddressByAddressId(int id, String street, String apartment, St
 
     public void deleteUser(int userId) {
         try {
+
             // Load the User entity by its ID
             User userToDelete = session.load(User.class, userId);
             // Check if the entity exists before deleting it
@@ -237,4 +238,9 @@ public void updateAddressByAddressId(int id, String street, String apartment, St
             // Handle the exception appropriately in your application
         }
     }
+    public void closeHibernate(){
+        session.close();
+        factory.close();
+    }
+
 }

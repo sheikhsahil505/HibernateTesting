@@ -25,7 +25,7 @@ public class User {
     private Blob profilePicture;
     @Transient
     private String base64ProfilePicture;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Address> addressList;
 
     public int getUser_id() {

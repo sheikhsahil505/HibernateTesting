@@ -85,10 +85,12 @@ public class UpdateProfile extends HttpServlet {
 //                    this is when image is not selected
                     if (Objects.equals(submittedFileName, "")) {
                         profilePictureBlob = profilePicture;
-                    } else {
-                        profilePictureBlob = new SerialBlob(bytes);
                     }
+
+                else{
+                    profilePictureBlob = new SerialBlob(bytes);
                 }
+}
                 User user = new User();
                 user.setUser_id(id);
                 user.setFirst_name(firstName);
@@ -177,6 +179,8 @@ public class UpdateProfile extends HttpServlet {
 
                             service.saveAddress(address);
                         }
+
+
                     }
                     List<User> allRegistrations = service.getAllRegistrations();
 //            after update all the details this is show update details of the user in next page
@@ -186,7 +190,9 @@ public class UpdateProfile extends HttpServlet {
                     request.setAttribute("profile", userByEmail);
                     request.setAttribute("registrations", allRegistrations);
                     request.getRequestDispatcher("/jsp/View.jsp").forward(request, response);
-                    
+
+
+
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }

@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.dao.Service;
+import com.dao.ServiceImpl;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -16,7 +18,8 @@ public class Logout extends HttpServlet {
             throws ServletException, IOException {
 
        try {
-
+           Service service = new ServiceImpl();
+           service.closeHibernate();
            HttpSession session = request.getSession(false);
            logger.info("logout successfully");
 //           when this servlet is call by the url this is invalid the session .
